@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from app import App
 from store import DaoTelephone
 from service import ServiceTelephone
@@ -9,6 +11,14 @@ PATH_TXT = "./db_telephone.txt"
 
 
 def setting_app(path: str) -> App:
+    """Настройка программы
+
+    Args:
+        path (str): путь до телефонной книги
+
+    Returns:
+        App: Объект приложения
+    """
     dao_tel = DaoTelephone(path)
     service = ServiceTelephone(dao_tel)
     return App(service)
@@ -20,7 +30,7 @@ def main():
         "Привет пользователь!\n" "Чтобы посмотреть доступные команды введите <помощь>"
     )
     while True:
-        command = input("Введите команду: ")
+        command = input("Введите команду: ").strip()
         match command:
             case "помощь":
                 print(

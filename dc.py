@@ -3,6 +3,9 @@ from dataclasses import dataclass
 
 @dataclass
 class TelephoneLine:
+    """
+    Класс для записей из телефонной книги
+    """
     last_name: str
     first_name: str
     middle_name: str
@@ -11,6 +14,11 @@ class TelephoneLine:
     phone_home: str
 
     def form_write(self) -> str:
+        """Подготовка данных из объекта записи к, записи в телефонную книгу
+
+        Returns:
+            str: отформатированная строка
+        """
         format_res = ":".join(
             [
                 self.last_name,
@@ -25,6 +33,11 @@ class TelephoneLine:
         return format_res + "\n"
 
     def form_print(self) -> str:
+        """Подготовка данных из объекта записи к выводу в консоль
+
+        Returns:
+            str: отформатированная строка
+        """
         return (
             "Ф.И.О. - {0} {1} {2}\n"
             "Организация - {3}\n"

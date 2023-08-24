@@ -19,7 +19,10 @@ class App:
     def __init__(self, service: ServiceTelephone) -> None:
         self.service = service
 
-    def get_all(self):
+    def get_all(self) -> None:
+        """
+        Вывод всех записеи консоль
+        """
         print_text = ""
         for item in self.service.get_all():
             print_text += "=" * 40 + "\n"
@@ -27,7 +30,10 @@ class App:
 
         print(print_text or "В базе данных нет телефонов")
 
-    def add_phone(self):
+    def add_phone(self) -> None:
+        """
+        Получение данных по новой записи от пользователя и добавление ее в телефонную книгу
+        """
         data, err = self.input_data()
 
         if err:
@@ -35,7 +41,10 @@ class App:
 
         self.service.add_phone(data)
 
-    def search_phone(self):
+    def search_phone(self) -> None:
+        """
+        Поиск записи из телефонной книги по полученным данным от пользователя 
+        """
         print(
             "Введите данные для поиска, для пропуска введите <далее>\n"
             "для немедленного поиска введите <все>"
@@ -47,7 +56,10 @@ class App:
             "=" * 20 + "\n" + phone.form_print() if phone else "Пользователь не найден"
         )
 
-    def edit_phone(self):
+    def edit_phone(self) -> None:
+        """
+        Изменение записи телефонной книги
+        """
         print(
             "Введите данные для поиска записи которую вы хотите изменить,\n"
             "для пропуска характеристики введите <далее>\n"
@@ -71,6 +83,9 @@ class App:
         self.service.edit_phone(phone, partial_data)
 
     def input_data(self) -> tuple[dict, int]:
+        """Получение полной информации по новой записи от пользователя и
+        валидация полученных данных
+        """
         data_input = {}
 
         for key, value in self.INPUT_DATA.items():
@@ -94,12 +109,15 @@ class App:
                         print("Не должно быть цифр и спецзнаков")
                         continue
 
-                data_input[key] = input_data
+                data_input[key] = input_data.strip()
                 break
 
         return data_input, 0
 
     def partial_data(self):
+        """Получение частичной информации по новой записи от пользователя и
+        валидация полученных данных
+        """
         data_search = {}
 
         for key, value in self.INPUT_DATA.items():
@@ -126,7 +144,7 @@ class App:
                         print("Не должно быть цифр и спецзнаков")
                         continue
 
-                data_search[key] = input_data
+                data_search[key] = input_data.strip()
                 break
 
         return data_search
