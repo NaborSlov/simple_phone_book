@@ -1,0 +1,5 @@
+last_name:first_name:middle_name:organization:phone_work:phone_home
+last_name1:first_name1:middle_name1:organization1:phone_work1:phone_home1
+last_name2:first_name2:middle_name2:organization2:phone_work2:phone_home2
+Усманов:Никита:Борисович:РостНефть:9773212345:9773212345
+уаыфа:уаафыа:ауфачфа:ауфаыфауф:8412412414:8412412414
